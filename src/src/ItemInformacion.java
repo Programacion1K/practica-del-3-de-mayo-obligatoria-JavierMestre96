@@ -1,49 +1,50 @@
-public class ItemInformacion{
-    private String numeroTelefono;
-    private String numeroTelefono2;
-    private String direccion;
+import java.util.ArrayList;
+import java.util.List;
 
-    ItemInformacion(String numero1, String numero2, String direccion){
-        this.numeroTelefono=numero1;
-        this.numeroTelefono2=numero2;
-        this.direccion =direccion;
-    }
-    ItemInformacion(String numero , String direccion){
-        this.numeroTelefono=numero;
-        this.numeroTelefono2=null;
-        this.direccion =direccion;
+public class ItemInformacion implements Comparable<ItemInformacion>{
+    private String nombreItem;
+    private String dato;
+
+    public ItemInformacion(String nombreItem, String dato) {
+        this.nombreItem = nombreItem;
+        this.dato = dato;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getNombreItem() {
+        return nombreItem;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setNombreItem(String nombreItem) {
+        this.nombreItem = nombreItem;
     }
 
-    public String getNumeroTelefono() {
-        return numeroTelefono;
+    public String getDato() {
+        return dato;
     }
 
-    public void setNumeroTelefono(String numeroTelefono) {
-        this.numeroTelefono = numeroTelefono;
+    public void setDato(String dato) {
+        this.dato = dato;
     }
 
-    public String getNumeroTelefono2() {
-        return numeroTelefono2;
-    }
-
-    public void setNumeroTelefono2(String numeroTelefono2) {
-        this.numeroTelefono2 = numeroTelefono2;
+    public String info(){
+        String info="";
+        info+=this.nombreItem+" : "+this.dato;
+        return info;
     }
 
     @Override
     public String toString() {
-        return "ItemInformacion{" +
-                "direccion='" + direccion + '\'' +
-                ", numeroTelefono='" + numeroTelefono + '\'' +
-                ", numeroTelefono2='" + numeroTelefono2 + '\'' +
-                '}';
+        return nombreItem +" : " + dato;
+    }
+
+
+    public static void main(String[] args) {
+        ItemInformacion info1 = new ItemInformacion("Cumpleaños","2 de Enero");
+        System.out.println(info1);
+    }
+
+    @Override
+    public int compareTo(ItemInformacion informacion) {
+        return this.nombreItem.compareTo(informacion.nombreItem);
     }
 }
